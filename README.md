@@ -12,12 +12,11 @@ SELECT
     eventType, 
     username 
 FROM events 
-WHERE eventName = 'Login Failed'
+WHERE (eventName LIKE '%fail%' OR eventName LIKE '%Fail%')
 AND username = 'KeyArtifact'
-AND time >= NOW() - 24h
 ```
 
-## AQL Query for Threat IP Prevalence (Last 7 Days):
+## AQL Query for Threat IP Prevalence:
 This query will provide you with a detailed overview of how often the threat IP has appeared in the last week, including counts and unique IP details. Adjust the threat IP as needed for your specific investigation.
 
 ```AQL
@@ -31,12 +30,11 @@ SELECT
     latest(time) AS LastSeen 
 FROM events 
 WHERE (sourceIP = 'KeyArtifact' OR destinationIP = 'KeyArtifact')
-AND time >= NOW() - 7d
 GROUP BY sourceIP, destinationIP
 ORDER BY Occurrences DESC
 ```
 
-## AQL Query for User Activity (Last 24 Hours):
+## AQL Query for User Activity:
 This query will provide detailed information on the specified user's activity over the past 24 hours, including event counts and timestamps.
 
 ```AQL
@@ -51,7 +49,6 @@ SELECT
     latest(time) AS LastSeen 
 FROM events 
 WHERE username = 'KeyArtifact'
-AND time >= NOW() - 1d
 GROUP BY username, sourceIP, destinationIP, eventName, eventType
 ORDER BY FirstSeen DESC
 ```
