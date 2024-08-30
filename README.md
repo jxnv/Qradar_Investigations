@@ -1,5 +1,5 @@
 # Qradar_Investigations
-This document contains Qradar queries for SOC investigation purposes. These prompts can be copied and pasted directly into Qradar, with "KeyArtifact" replaced by the appropriate search term relevant to your investigation.
+This document contains Qradar queries for SOC investigation purposes. These prompts can be copied and pasted directly into Qradar, with "KeyArtifact" replaced by the appropriate search term relevant to your investigation. Not all field names will work for each deployment, so prompt adjustment is likely required. 
 
 
 ## AQL Query for Failed Login Attempts by a Specific User.
